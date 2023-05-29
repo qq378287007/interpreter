@@ -22,10 +22,13 @@ public:
 class Number : public Object
 {
 public:
+    Number(double value = 0.0);
     virtual Type type() const override;
     virtual string Inspect()  const override;
+
+    inline double value() const {return m_Value;}
 private:
-    double value;
+    double m_Value;
 };
 
 
@@ -39,8 +42,9 @@ public:
 class Error : public Object
 {
 public:
+    Error(const string &message = "");
     virtual Type type() const override;
     virtual string Inspect()  const override;
 private:
-    string message;
+    string m_Message;
 };

@@ -1,46 +1,19 @@
 #pragma once
 
+#include <unordered_map>
 #include <string>
 using namespace std;
 
-class Object
+#include "Object.h"
+
+class Environment
 {
 public:
-    enum Type // 类型
-    {
-        NULL_OBJ  , //
-        ERROR_OBJ , //
-        NUMBER_OBJ ,
-    };
-    static string type2name(Type type) ;
+    Environment(Environment *out = nullptr);
+    Object * Get(const string &name) const ;
+    void Set(const string &name, Object *val);
 
-public:
-    virtual Type type() const = 0;
-    virtual string Inspect() const  = 0;
-};
-
-class Number : public Object
-{
-public:
-    virtual Type type() const override;
-    virtual string Inspect()  const override;
 private:
-    double value;
-};
-
-
-class Null : public Object
-{
-public:
-    virtual Type type() const override;
-    virtual string Inspect()  const override;
-};
-
-class Error : public Object
-{
-public:
-    virtual Type type() const override;
-    virtual string Inspect()  const override;
-private:
-    string message;
+    unordered_map<string, Object *> store;
+    Environment *outer{nullptr};
 };

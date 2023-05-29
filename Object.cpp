@@ -16,6 +16,11 @@ string Object::type2name(Object::Type type)
     return "none";
 }
 
+Number::Number(double value)
+{
+    m_Value = value;
+}
+
 Object::Type Number::type() const
 {
     return NUMBER_OBJ;
@@ -24,7 +29,7 @@ Object::Type Number::type() const
 string Number::Inspect() const
 {
     std::stringstream ss;
-    ss << std::setprecision(15) << value;
+    ss << std::setprecision(15) << m_Value;
     string str = ss.str();
     return  str;
 }
@@ -38,6 +43,12 @@ string Null::Inspect() const
 {
     return  "null";
 }
+Error::Error(const string &message)
+    : m_Message(message)
+{
+
+}
+
 Object::Type Error::type() const
 {
     return ERROR_OBJ;
@@ -45,5 +56,5 @@ Object::Type Error::type() const
 
 string Error::Inspect() const
 {
-    return  "Error: " + message;
+    return  "Error: " + m_Message;
 }
