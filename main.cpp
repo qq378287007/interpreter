@@ -6,6 +6,7 @@ using namespace std;
 #include "Environment.h"
 
 int main(){
+    if(0)
     {
         string line{"_a+b25*c-(12.52+5)"};
         Lexer l{line};
@@ -13,6 +14,7 @@ int main(){
             cout<<token.literal()<<"\n";
     }
 
+    if(0)
     {
         string line{"a+b*c-(12+5.26)"};
         Lexer l{line};
@@ -22,6 +24,7 @@ int main(){
         cout<<exp->String()<<endl;
     }
 
+    if(0)
     {
         string line{"15+7.2*2.8-(12+5.26)"};
         Lexer l{line};
